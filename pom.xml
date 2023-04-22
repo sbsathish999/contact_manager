@@ -15,7 +15,6 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
-		<sonar.token>sqp_14f7519feab0d8177a2dafe836448d85f4eb629e</sonar.token>
 		<sonar.projectKey>Contact-Manager</sonar.projectKey>
 		<sonar.projectName>Contact-Manager</sonar.projectName>
 		<sonar.host.url>http://localhost:9000</sonar.host.url>
