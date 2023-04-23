@@ -27,4 +27,10 @@ public class Number implements Serializable {
     @ToString.Exclude
     @JoinColumn(name = "contact_id", referencedColumnName = "id")
     Contact contact;
+
+    public Number(int id, String number, String type) {
+        this.id = id;
+        this.number = number;
+        this.type = type;
+    }
 }
