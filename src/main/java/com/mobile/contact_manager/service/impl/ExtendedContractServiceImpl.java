@@ -20,11 +20,12 @@ public class ExtendedContractServiceImpl implements
     @Autowired
     ContactRepository repository;
 
+    String noMatchingContact = "No matching contacts found";
+
     @Override
     public void mergeDuplicates() {
         List<Contact> list = repository.findAll();
         List<Contact> removalContacts = filterDuplicates(list);
-        removalContacts.forEach(System.out :: println);
         repository.deleteAll(removalContacts);
     }
 
@@ -41,18 +42,18 @@ public class ExtendedContractServiceImpl implements
     @Override
     public List<Contact> getByFirstName(String firstName) {
         return repository.findByNameFirstName(firstName)
-                .orElseThrow(() -> new RuntimeException("No matching contacts found"));
+                .orElseThrow(() -> new RuntimeException(noMatchingContact));
     }
 
     @Override
     public List<Contact> getByLastName(String name) {
         return repository.findByNameLastName(name)
-                .orElseThrow(() -> new RuntimeException("No matching contacts found"));
+                .orElseThrow(() -> new RuntimeException(noMatchingContact));
     }
 
     @Override
     public List<Contact> getByFullName(String firstName, String lastName) {
         return repository.findByNameFirstNameAndNameLastName(firstName, lastName)
-                .orElseThrow(() -> new RuntimeException("No matching contacts found"));
+                .orElseThrow(() -> new RuntimeException(noMatchingContact));
     }
 }
